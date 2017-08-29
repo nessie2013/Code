@@ -1,0 +1,87 @@
+private int Lives = 100;
+public int money = 100;
+
+public Gameobject = Tank;
+
+public Transform = StartPos;
+
+Public Gameobject = BasicBuildMenu;
+
+void Update()
+{
+	
+}
+
+void FixedUpdate()
+{
+    RaycastHit hit;
+
+    if (Physics.Raycast(transform.position, -Vector3.up, out hit))
+	{
+		if(hit.gameObject.tag == "BuildSpot")
+		{
+			BasicBuildMenu.SetActive(false);
+		}
+	}   
+}
+
+//BuildMenuScript
+
+public Gameobject = TowerBase
+public Gameobject = BasicTower
+
+(tower spot with child as build base and tower as child then have upgraded towers child of that tower)
+void BuildTower()
+{
+	if(otherscriptmoney == 100)
+	{
+		TowerBase.SetActive(false);
+		BasicTower.SetActive True
+	}
+}
+
+// Tank Script
+
+public int Health;
+
+void Update()
+{
+	(add velocity)
+	if(Health <= 0)
+	{
+		Destroy(Gameobject);
+		(other script money) += 10
+	}
+}
+
+void OnTriggerEnter(Collider col)
+{
+	if(col.gameobject.tag == "MapEnd")
+	{
+		Destroy(Gameobject);
+
+		(others script lives) -= 1;
+	}
+	
+	if(col.gameobject.tag == "Bullet")
+	{
+		Health -= 10;
+		
+		Destroy(col.Gameobject)
+	}
+}
+
+//Tank Spawner
+
+public int Wave = 0;
+
+
+void Update()
+{
+
+}
+
+void StartWave()
+{
+	if(TanksLeft == 0)
+}
