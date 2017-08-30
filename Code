@@ -1,15 +1,20 @@
 private int Lives = 100;
-public int money = 100;
+public int Money = 100;
 
 public Gameobject = Tank;
 
 public Transform = StartPos;
 
-Public Gameobject = BasicBuildMenu;
+public Gameobject = BasicBuildMenu;
+
+public Text LivesText;
+public Text MoneyText;
+
 
 void Update()
 {
-	
+	LivesText = "Lives: " + Lives;
+	MoneyText = "Money: " + Money;
 }
 
 void FixedUpdate()
@@ -20,7 +25,11 @@ void FixedUpdate()
 	{
 		if(hit.gameObject.tag == "BuildSpot")
 		{
-			BasicBuildMenu.SetActive(false);
+			BasicBuildMenu.SetActive(true);
+		}
+		if(hit.gameobject.tag == "BaseTower")
+		{
+			SecondaryBuildMenu.SetActive(true);
 		}
 	}   
 }
@@ -36,7 +45,8 @@ void BuildTower()
 	if(otherscriptmoney == 100)
 	{
 		TowerBase.SetActive(false);
-		BasicTower.SetActive True
+		BasicTower.SetActive(True);
+		(other script money) -= 100;
 	}
 }
 
@@ -50,7 +60,8 @@ void Update()
 	if(Health <= 0)
 	{
 		Destroy(Gameobject);
-		(other script money) += 10
+		(other script money) += 10;
+		(otherscript tanksleft) -= 1;
 	}
 }
 
@@ -67,21 +78,28 @@ void OnTriggerEnter(Collider col)
 	{
 		Health -= 10;
 		
-		Destroy(col.Gameobject)
+		Destroy(col.Gameobject);
 	}
 }
 
 //Tank Spawner
 
+using.unity.UI;
+
 public int Wave = 0;
+private int TanksLeft;
+public Text TankNumbers
 
 
 void Update()
 {
-
+TankNummbers = "Tanks Left: " + TanksLeft;
 }
 
 void StartWave()
 {
 	if(TanksLeft == 0)
+	{
+		Wave += 1;
+	}
 }
