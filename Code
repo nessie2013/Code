@@ -1,4 +1,4 @@
-private int Lives = 100;
+
 public int Money = 100;
 
 public Gameobject = Tank;
@@ -7,13 +7,13 @@ public Transform = StartPos;
 
 public Gameobject = BasicBuildMenu;
 
-public Text LivesText;
 public Text MoneyText;
-
+private int Lives = 100;
+public Text LivesText;
 
 void Update()
 {
-	LivesText = "Lives: " + Lives;
+	LivesText = "Lives: " + Lives
 	MoneyText = "Money: " + Money;
 }
 
@@ -36,23 +36,31 @@ void FixedUpdate()
 
 //BuildMenuScript
 
-public Gameobject = TowerBase
-public Gameobject = BasicTower
+public Gameobject = TowerBase;
+public Gameobject = BasicTower;
+
+private PlayerScript ScriptForPlayer;
+
+void Awake()
+{
+	ScriptForPlayer = GetComponent<TankScript> ();
+}
 
 (tower spot with child as build base and tower as child then have upgraded towers child of that tower)
 void BuildTower()
 {
-	if(otherscriptmoney == 100)
+	if(ScriptForPlayer.Money == 100)
 	{
 		TowerBase.SetActive(false);
 		BasicTower.SetActive(True);
-		(other script money) -= 100;
+		ScriptForPlayer.Money -= 100;
 	}
 }
 
 // Tank Script
 
 public int Health;
+public Gameobject Player;
 
 void Update()
 {
