@@ -35,7 +35,7 @@ public void StartQuestTwo()
 
 add on colision
 
-if (col.gameObject.tag == "QuestObjectOne")
+if (col.gameObject.tag == "QuestObjectOne") 
 {
     if (QuestOneStarted == 1)
     {
