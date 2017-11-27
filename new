@@ -5,6 +5,7 @@ public Text StartQuestOne;
 public Text StartQuestTwo;
 public GameObject QuestOneHint;
 public GameObject QuestTwoHint;
+public GameObject QuestCanvas
 
 public void StartQuestOne()
 {
@@ -34,23 +35,47 @@ public void StartQuestTwo()
 
 add on colision
 
-if (gameObject.tag == "QuestObjectOne")
+if (col.gameObject.tag == "QuestObjectOne")
 {
     if (QuestOneStarted == 1)
     {
         QuestOneStarted = 3;
         StartQuestOne.text = "Done";
         QuestOneHint.setActive(false);
-        Xp += 200
+        Xp += 200;
         //update level info here
     }
+}
     
+if (col.gameObject.tag == "QuestObjectTwo")
+{
     if (QuestTwoStarted == 1)
     {
         QuestTwoStarted = 3;
         StartQuestTwo.text = "Done";
         QuestTwoHint.setActive(false);
-        Xp += 200
+        Xp += 200;
         //update level info here
     }
+}
+
+add on trigger stay
+
+if(col.gameObject.tag == "Quests")
+{
+    if(Input.GetKey("space"))
+    {
+        QuestCanvas.setActive(true);
+    }
+    if(Input.GetKeyUp("space"))
+    {
+        QuestCanvas.setActive(false);
+    }
+}
+
+add on trigger leave 
+
+if(col.gameObject.tag == "Quests")
+{
+    QuestCanvas.setActive(false);
 }
