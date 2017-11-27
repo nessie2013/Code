@@ -1,31 +1,56 @@
-public Transform[] SpawnPoint;
-public GameObject enemy;
-private float spawnTime = 5f
+private int QuestOneStarted = 0; //0 = false 1 = true 2 = done
+private int QuestTwoStarted = 0;
 
-void Start ()
+public Text StartQuestOne;
+public Text StartQuestTwo;
+public GameObject QuestOneHint;
+public GameObject QuestTwoHint;
+
+public void StartQuestOne()
+{
+    if(!QuestTwoStarted == 1)
     {
-        InvokeRepeating ("Spawn", spawnTime, spawnTime);
+        if (QuestOneStarted == 0)
+        {
+            QuestOneHint.setActive(true);
+            QuestOneStarted = 1;
+            StartQuestOne.text = "Started";
+        }
     }
+}
 
-
-    void Spawn ()
+public void StartQuestTwo()
+{
+    if (!QuestOneStarted == 1)
     {
-        // Find a random index between zero and one less than the number of spawn points.
-        int spawnPointIndex = Random.Range (0, spawnPoints.Length);
- 
-        // Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
-        Instantiate (enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+        if (QuestTwoStarted == 0)
+        {
+            QuestTwoHint.setActive(true);
+            QuestTwoStarted = 1;
+            StartQuestTwo.text = "Started";
+        }
+    }
+}
+
+add on colision
+
+if (gameObject.tag == "QuestObjectOne")
+{
+    if (QuestOneStarted == 1)
+    {
+        QuestOneStarted = 3;
+        StartQuestOne.text = "Done";
+        QuestOneHint.setActive(false);
+        Xp += 200
+        //update level info here
     }
     
-    
-   void Start()
-   {
-   StartCoroutine(Despawn());
-   }
-
-    IEnumerator Despawn()
+    if (QuestTwoStarted == 1)
     {
-        yield return new WaitForSeconds(10);
-        Destroy.gameObject;
+        QuestTwoStarted = 3;
+        StartQuestTwo.text = "Done";
+        QuestTwoHint.setActive(false);
+        Xp += 200
+        //update level info here
     }
-   
+}
