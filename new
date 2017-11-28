@@ -83,4 +83,40 @@ if(col.gameObject.tag == "Quests")
 
 
 
-public Text Kill10Quest
+public Text Kill10Quest;
+public Text Kill100Quest;
+public int Kill10QuestDone = 0; //0 = false 1 = true
+public int Kill100uestDone = 0;
+public int KillCount = 0;
+
+add on kill
+
+KillCount += 1;
+Kill10Quest.text = "You Have Killed " + KillCount + " / 10";
+
+if (KillCount == 10)
+{
+    if (Kill10QuestDone == 0)
+    {
+        Xp += 100;
+        Kill10QuestDone = 1;
+    }
+}
+
+if (KillCount == 100)
+{
+    if (Kill100QuestDone == 0)
+    {
+        Xp += 1000;
+        Kill100QuestDone = 1;
+    }
+}
+
+replace old xp reseting system with
+
+Xp -= MaxXp;
+MaxXp += MaxXp;
+
+EnemyLevel = Level to Level + 3
+till lvl 5 when
+EnemyLevel = Level - 3 to Level + 3
