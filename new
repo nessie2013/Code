@@ -79,3 +79,8 @@ if(col.gameObject.tag == "Quests")
 {
     QuestCanvas.setActive(false);
 }
+
+
+
+
+public Text Kill10Quest
