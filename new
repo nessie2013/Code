@@ -100,6 +100,7 @@ if (KillCount == 10)
     {
         Xp += 100;
         Kill10QuestDone = 1;
+        //set sword transform to 1.5
     }
 }
 
@@ -109,6 +110,9 @@ if (KillCount == 100)
     {
         Xp += 1000;
         Kill100QuestDone = 1;
+        MaxHealth =+ 5;
+        Health = MaxHealth;
+        //set sword transform to 3
     }
 }
 
@@ -120,3 +124,7 @@ MaxXp += MaxXp;
 EnemyLevel = Level to Level + 3
 till lvl 5 when
 EnemyLevel = Level - 3 to Level + 3
+
+
+
+
